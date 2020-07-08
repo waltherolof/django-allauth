@@ -27,7 +27,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         },
     ]
 
-    AUTHENTICATION_BACKENDS = (
+    AUTHENTICATION_BACKENDS = [
         ...
         # Needed to login by username in Django admin, regardless of `allauth`
         'django.contrib.auth.backends.ModelBackend',
@@ -35,9 +35,9 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         # `allauth` specific authentication methods, such as login by e-mail
         'allauth.account.auth_backends.AuthenticationBackend',
         ...
-    )
+    ]
 
-    INSTALLED_APPS = (
+    INSTALLED_APPS = [
         ...
         # The following apps are required:
         'django.contrib.auth',
@@ -71,6 +71,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.dropbox',
         'allauth.socialaccount.providers.dwolla',
         'allauth.socialaccount.providers.edmodo',
+        'allauth.socialaccount.providers.edx',
         'allauth.socialaccount.providers.eveonline',
         'allauth.socialaccount.providers.evernote',
         'allauth.socialaccount.providers.exist',
@@ -87,6 +88,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.instagram',
         'allauth.socialaccount.providers.jupyterhub',
         'allauth.socialaccount.providers.kakao',
+        'allauth.socialaccount.providers.keycloak',
         'allauth.socialaccount.providers.line',
         'allauth.socialaccount.providers.linkedin',
         'allauth.socialaccount.providers.linkedin_oauth2',
@@ -94,6 +96,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.mailchimp',
         'allauth.socialaccount.providers.meetup',
         'allauth.socialaccount.providers.microsoft',
+        'allauth.socialaccount.providers.mixer',
         'allauth.socialaccount.providers.naver',
         'allauth.socialaccount.providers.nextcloud',
         'allauth.socialaccount.providers.odnoklassniki',
@@ -128,9 +131,10 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.weixin',
         'allauth.socialaccount.providers.windowslive',
         'allauth.socialaccount.providers.xing',
+        'allauth.socialaccount.providers.yandex',
         'allauth.socialaccount.providers.ynab',
         ...
-    )
+    ]
 
     SITE_ID = 1
 
@@ -152,7 +156,7 @@ urls.py::
 
     urlpatterns = [
         ...
-        url(r'^accounts/', include('allauth.urls')),
+        path('accounts/', include('allauth.urls')),
         ...
     ]
 

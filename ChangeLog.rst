@@ -1,5 +1,26 @@
-0.41.0 (Unreleased)
+0.42.0 (2020-05-24)
 *******************
+
+Note worthy changes
+-------------------
+
+- New providers: EDX, Yandex, Mixer.
+
+- Fixed Twitch ``get_avatar_url()`` method to use the profile picture retrieved
+  by new user details endpoint introduced in version 0.40.0.
+
+- The Facebook API version now defaults to v7.0.
+
+
+0.41.0 (2019-12-18)
+*******************
+
+Security notice
+---------------
+
+- See `CVE-2019-19844
+  <https://www.djangoproject.com/weblog/2019/dec/18/security-releases/>`_.
+
 
 Note worthy changes
 -------------------
@@ -9,6 +30,8 @@ Note worthy changes
 - You can now store OAuth credentials directly in your
   ``settings.SOCIALACCOUNT_PROVIDERS`` settings instead of storing them in the
   database using a ``SocialApp`` record.
+
+- Adding Keycloak Provider
 
 
 Backwards incompatible changes
