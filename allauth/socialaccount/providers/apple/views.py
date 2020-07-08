@@ -23,6 +23,8 @@ from allauth.utils import get_request_param
 from .apple_session import add_apple_session, persist_apple_session
 from .client import AppleOAuth2Client
 from .provider import AppleProvider
+import allauth.app_settings
+from allauth.socialaccount import app_settings, providers
 
 class AppleOAuth2Adapter(OAuth2Adapter):
     client_cls = AppleOAuth2Client
@@ -54,7 +56,15 @@ class AppleOAuth2Adapter(OAuth2Adapter):
         return public_key
 
     def get_client_id(self, provider):
-        app = SocialApp.objects.get(provider=provider.id)
+        app = None
+        config = app_settings.PROVIDERS.get(provider.id, {}).get('APP')
+        if config:
+            app = SocialApp(provider=provider)
+            for field in ['client_id', 'secret', 'key', 'cert']:
+                setattr(app, field, config.get(field))
+        else:
+            app = SocialApp.objects.get(provider=provider.id)
+        
         return [aud.strip() for aud in app.client_id.split(",")]
 
     def get_verified_identity_data(self, id_token):
