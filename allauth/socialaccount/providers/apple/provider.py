@@ -30,6 +30,8 @@ class AppleProvider(OAuth2Provider):
         email = data.get('email')
         verified = data.get('email_verified')
         if not isinstance(verified, bool):
+            if verified == None:
+                verified = False
             verified = verified.lower() == 'true'
         if email:
             ret.append(
