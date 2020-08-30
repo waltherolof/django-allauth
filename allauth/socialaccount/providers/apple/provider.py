@@ -32,7 +32,8 @@ class AppleProvider(OAuth2Provider):
         if not isinstance(verified, bool):
             if verified == None:
                 verified = False
-            verified = verified.lower() == 'true'
+            else:
+                verified = verified.lower() == 'true'
         if email:
             ret.append(
                 EmailAddress(
